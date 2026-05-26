@@ -132,7 +132,9 @@ body::before{
   will-change:transform,opacity,filter;
 }
 .hand-human{
-  left:0;
+  left: 0;
+  width: 50vw;
+  max-width: none;
   transform:translate(-8vw, -50%);
   opacity:0.10;
   filter:blur(3px) grayscale(20%);
@@ -140,7 +142,9 @@ body::before{
   mix-blend-mode:multiply;
 }
 .hand-agent{
-  right:0;
+  right: 0;
+  width: 50vw;
+  max-width: none;
   transform:translate(8vw, -50%);
   opacity:0;
   filter:blur(6px);
@@ -1449,71 +1453,12 @@ body::before{
 <div class="hands-stage" aria-hidden="true">
   <!-- HUMAN HAND · line-art, reaching right -->
   <div class="hand-layer hand-human">
-    <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M 30 490 C 95 425, 145 365, 195 305 C 215 280, 240 258, 275 244 C 320 226, 365 222, 405 232 C 430 238, 452 248, 470 256" />
-      <path d="M 470 256 C 510 248, 555 240, 600 234 C 620 231, 638 234, 648 244 C 655 252, 654 262, 644 267 C 612 275, 568 286, 524 296" />
-      <path d="M 472 254 C 462 232, 458 210, 466 192 C 474 178, 488 174, 498 184 C 506 196, 502 220, 492 240" />
-      <path d="M 520 298 C 488 308, 460 318, 446 338 C 438 354, 446 368, 466 370 C 488 370, 510 360, 522 344" />
-      <path d="M 522 344 C 528 358, 524 374, 510 384 C 494 392, 478 388, 470 378" />
-      <path d="M 470 378 C 468 392, 458 402, 444 404 C 432 404, 424 396, 422 384" />
-      <path d="M 422 384 C 408 388, 384 384, 360 378 C 326 370, 296 360, 270 348 C 244 338, 218 332, 198 332 C 175 332, 152 342, 130 358 C 105 376, 80 400, 56 426 C 46 438, 38 460, 30 490" />
-      <path d="M 240 295 C 290 295, 340 300, 388 312" opacity="0.55" stroke-width="1.4" />
-      <path d="M 530 268 C 540 266, 552 264, 564 262" opacity="0.55" stroke-width="1.4" />
-    </svg>
+    <img src="left_hand_full.png" alt="Human Hand" style="width: 100%; display: block; pointer-events: none;">
   </div>
 
   <!-- AGENT HAND · cosmic silhouette, reaching left -->
   <div class="hand-layer hand-agent">
-    <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="cosmoFade" cx="40%" cy="50%" r="80%">
-          <stop offset="0%" stop-color="#0c0a14" />
-          <stop offset="55%" stop-color="#161320" />
-          <stop offset="100%" stop-color="#1a1612" />
-        </radialGradient>
-        <clipPath id="agentHandClip">
-          <path d="M 670 490 C 605 425, 555 365, 505 305 C 485 280, 460 258, 425 244 C 380 226, 335 222, 295 232 C 270 238, 248 248, 230 256 C 190 248, 145 240, 100 234 C 80 231, 62 234, 52 244 C 45 252, 46 262, 56 267 C 88 275, 132 286, 176 296 C 144 308, 116 318, 102 338 C 94 354, 102 368, 122 370 C 144 370, 166 360, 178 344 C 184 358, 180 374, 166 384 C 150 392, 134 388, 126 378 C 124 392, 114 402, 100 404 C 88 404, 80 396, 78 384 C 92 388, 116 384, 140 378 C 174 370, 204 360, 230 348 C 256 338, 282 332, 302 332 C 325 332, 348 342, 370 358 C 395 376, 420 400, 444 426 C 454 438, 462 460, 470 490 Z" />
-        </clipPath>
-      </defs>
-
-      <g clip-path="url(#agentHandClip)">
-        <rect width="700" height="500" fill="url(#cosmoFade)" />
-        <g fill="#FBF7EF">
-          <circle cx="120" cy="280" r="1.8" opacity="0.95"/>
-          <circle cx="158" cy="320" r="1.2" opacity="0.65"/>
-          <circle cx="200" cy="260" r="2.4" opacity="1"/>
-          <circle cx="245" cy="290" r="1.4" opacity="0.78"/>
-          <circle cx="280" cy="248" r="1.0" opacity="0.55"/>
-          <circle cx="310" cy="278" r="2.0" opacity="0.9"/>
-          <circle cx="345" cy="252" r="1.3" opacity="0.7"/>
-          <circle cx="380" cy="282" r="1.8" opacity="0.85"/>
-          <circle cx="412" cy="246" r="1.1" opacity="0.6"/>
-          <circle cx="448" cy="276" r="2.5" opacity="1"/>
-          <circle cx="478" cy="248" r="1.4" opacity="0.78"/>
-          <circle cx="512" cy="284" r="1.0" opacity="0.5"/>
-          <circle cx="548" cy="262" r="2.1" opacity="0.95"/>
-          <circle cx="586" cy="298" r="1.5" opacity="0.75"/>
-          <circle cx="612" cy="332" r="1.2" opacity="0.65"/>
-          <circle cx="166" cy="354" r="1.6" opacity="0.85"/>
-          <circle cx="208" cy="378" r="1.2" opacity="0.7"/>
-          <circle cx="252" cy="356" r="2.0" opacity="0.9"/>
-          <circle cx="298" cy="382" r="1.4" opacity="0.78"/>
-          <circle cx="336" cy="358" r="1.1" opacity="0.55"/>
-          <circle cx="372" cy="380" r="2.2" opacity="0.95"/>
-          <circle cx="410" cy="358" r="1.3" opacity="0.7"/>
-          <circle cx="446" cy="382" r="1.7" opacity="0.85"/>
-          <circle cx="484" cy="358" r="1.0" opacity="0.55"/>
-          <circle cx="520" cy="378" r="2.2" opacity="0.95"/>
-          <circle cx="560" cy="358" r="1.4" opacity="0.7"/>
-          <path d="M 230 232 l 0 -10 l 1.6 8 l 8 1.6 l -8 1.6 l -1.6 8 l -1.6 -8 l -8 -1.6 l 8 -1.6 z" opacity="0.95"/>
-          <path d="M 392 322 l 0 -8 l 1.4 6.6 l 6.6 1.4 l -6.6 1.4 l -1.4 6.6 l -1.4 -6.6 l -6.6 -1.4 l 6.6 -1.4 z" opacity="0.9"/>
-          <path d="M 530 232 l 0 -9 l 1.5 7.5 l 7.5 1.5 l -7.5 1.5 l -1.5 7.5 l -1.5 -7.5 l -7.5 -1.5 l 7.5 -1.5 z" opacity="1"/>
-          <path d="M 158 410 l 0 -7 l 1.2 5.8 l 5.8 1.2 l -5.8 1.2 l -1.2 5.8 l -1.2 -5.8 l -5.8 -1.2 l 5.8 -1.2 z" opacity="0.85"/>
-        </g>
-      </g>
-
-      <path d="M 670 490 C 605 425, 555 365, 505 305 C 485 280, 460 258, 425 244 C 380 226, 335 222, 295 232 C 270 238, 248 248, 230 256 C 190 248, 145 240, 100 234 C 80 231, 62 234, 52 244 C 45 252, 46 262, 56 267 C 88 275, 132 286, 176 296" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.85" />
-    </svg>
+    <img src="right_hand_full.png" alt="Agent Hand" style="width: 100%; display: block; pointer-events: none;">
   </div>
 
   <div class="hand-touch-glow"></div>
@@ -2168,15 +2113,23 @@ body::before{
     }
   });
 
-  ScrollTrigger.create({
+ScrollTrigger.create({
     trigger: '#reach',
     start: 'top top',
     end: 'bottom bottom',
     scrub: 1.2,
     onUpdate: (st) => {
       const p = st.progress;
-      gsap.to(human, { x: `${-8 + p * 13}vw`, opacity: 0.32 + p * 0.08, filter: `blur(${Math.max(0, 0.6 - p * 0.6)}px) grayscale(0%)`, overwrite: 'auto', duration: 0.3 });
-      gsap.to(agent, { x: `${8 - p * 13}vw`, opacity: 0.22 + p * 0.16, filter: `blur(${Math.max(0.4, 3 - p * 2.6)}px)`, overwrite: 'auto', duration: 0.3 });
+      // We want them to fully touch at the end of #reach.
+      // The images need to end exactly at 0vw offset to be in their original aligned positions,
+      // since the images are cropped from the original full-width image.
+      // Wait, the images are actually half-width now. Let's see how they are positioned.
+      // .hand-human has transform:translate(-8vw, -50%)
+      // .hand-agent has transform:translate(8vw, -50%)
+      // So at p=1, we want x: 0 for both so they meet in the middle.
+
+      gsap.to(human, { x: `${-8 + p * 8}vw`, opacity: 0.32 + p * 0.10, filter: `blur(${Math.max(0, 0.6 - p * 0.6)}px) grayscale(0%)`, overwrite: 'auto', duration: 0.3 });
+      gsap.to(agent, { x: `${8 - p * 8}vw`, opacity: 0.22 + p * 0.20, filter: `blur(${Math.max(0.0, 3 - p * 3)}px)`, overwrite: 'auto', duration: 0.3 });
     }
   });
 
@@ -2185,8 +2138,10 @@ body::before{
     start: 'top 60%',
     once: true,
     onEnter: () => {
-      gsap.to(human, { x: '7vw', opacity: 0.42, filter: 'blur(0px) grayscale(0%)', duration: 1.4, ease: 'expo.out' });
-      gsap.to(agent, { x: '-7vw', opacity: 0.42, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out' });
+      // Hands have already reached x:0, so we just maintain that and perhaps increase opacity slightly.
+      gsap.to(human, { x: '0vw', opacity: 0.42, filter: 'blur(0px) grayscale(0%)', duration: 1.4, ease: 'expo.out' });
+      gsap.to(agent, { x: '0vw', opacity: 0.42, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out' });
+
       gsap.to(glow, { opacity: 1, scale: 1, duration: 1.2, ease: 'expo.out', onComplete: () => {
         gsap.to(glow, { scale: 1.45, opacity: 0.7, repeat: -1, yoyo: true, duration: 2.8, ease: 'sine.inOut' });
       }});
