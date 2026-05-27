@@ -608,7 +608,7 @@ body::before{
 /* =====================================================================
    COLLAPSE — SCROLLYTELLING 1
    ===================================================================== */
-.collapse{height:350vh;position:relative;z-index:2}
+.collapse{height:240vh;position:relative;z-index:2}
 .collapse-sticky{
   position:sticky;top:0;
   height:100vh;
@@ -623,12 +623,12 @@ body::before{
   position:absolute;
   inset:0;
   opacity:0;
-  transform:translateY(-30%);
+  transform:translateY(30px);
   transition:opacity .9s var(--ease-out-q), transform .9s var(--ease-out-q);
   display:flex;flex-direction:column;justify-content:center;
 }
-.diary-entry.passed{opacity:0;transform:translateY(-70%)}
-.diary-entry.active{opacity:1;transform:translateY(-50%)}
+.diary-entry.passed{opacity:0;transform:translateY(-30px)}
+.diary-entry.active{opacity:1;transform:translateY(0)}
 .diary-week{
   font-family:var(--M);
   font-size:11px;
@@ -2108,8 +2108,11 @@ body::before{
   ScrollTrigger.create({
     trigger: '#discovery',
     start: 'top 70%',
-    onEnter: () => {
-      gsap.to(agent, { opacity: 0.20, filter: 'blur(3px)', duration: 2.4, ease: 'power3.out' });
+    end: 'bottom 30%',
+    scrub: 1,
+    onUpdate: (st) => {
+      const p = st.progress;
+      gsap.to(agent, { opacity: p * 0.20, filter: `blur(${3 - p * 0.5}px)`, overwrite: 'auto', duration: 0.4 });
     }
   });
 
@@ -2136,17 +2139,20 @@ ScrollTrigger.create({
   ScrollTrigger.create({
     trigger: '#benefits',
     start: 'top 60%',
-    once: true,
+    end: 'bottom 40%',
+    scrub: 1,
+    onUpdate: (st) => {
+      const p = st.progress;
+      gsap.to(human, { x: '0vw', opacity: 0.32 + p * 0.10, filter: 'blur(0px) grayscale(0%)', overwrite: 'auto', duration: 0.4 });
+      gsap.to(agent, { x: '0vw', opacity: 0.42 + p * 0.10, filter: 'blur(0px)', overwrite: 'auto', duration: 0.4 });
+      gsap.to(glow, { opacity: p, scale: 0.4 + p * 0.6, overwrite: 'auto', duration: 0.4 });
+      gsap.to('#touchBanner', { opacity: p, overwrite: 'auto', duration: 0.4 });
+    },
     onEnter: () => {
-      // Hands have already reached x:0, so we just maintain that and perhaps increase opacity slightly.
-      gsap.to(human, { x: '0vw', opacity: 0.42, filter: 'blur(0px) grayscale(0%)', duration: 1.4, ease: 'expo.out' });
-      gsap.to(agent, { x: '0vw', opacity: 0.42, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out' });
-
-      gsap.to(glow, { opacity: 1, scale: 1, duration: 1.2, ease: 'expo.out', onComplete: () => {
-        gsap.to(glow, { scale: 1.45, opacity: 0.7, repeat: -1, yoyo: true, duration: 2.8, ease: 'sine.inOut' });
-      }});
-      gsap.to('#touchBanner', { opacity: 1, duration: 0.8, ease: 'power2.out' });
-      gsap.to('.benefit-card', { opacity: 1, y: 0, duration: 0.85, stagger: 0.18, delay: 0.2, ease: 'expo.out' });
+      gsap.to('.benefit-card', { opacity: 1, y: 0, duration: 0.85, stagger: 0.18, delay: 0.1, ease: 'expo.out' });
+    },
+    onLeaveBack: () => {
+      gsap.to('.benefit-card', { opacity: 0, y: 30, duration: 0.5, stagger: 0.08, ease: 'power2.in' });
     }
   });
 
