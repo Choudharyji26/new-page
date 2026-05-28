@@ -156,14 +156,19 @@ body::before{
 .hand-touch-glow{
   position:absolute;
   left:50%;top:50%;
-  width:340px;height:340px;
+  width:380px;height:380px;
   border-radius:50%;
   transform:translate(-50%,-50%) scale(0.4);
-  background:radial-gradient(circle, rgba(248,225,184,0.9) 0%, rgba(244,180,90,0.45) 30%, rgba(194,65,12,0.18) 55%, transparent 75%);
+  background:radial-gradient(circle, rgba(248,225,184,1) 0%, rgba(244,180,90,0.6) 25%, rgba(194,65,12,0.25) 50%, transparent 80%);
   opacity:0;
   mix-blend-mode:screen;
-  filter:blur(10px);
+  filter:blur(12px);
   will-change:transform,opacity;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { filter: blur(12px); }
+  50% { filter: blur(14px); }
 }
 
 #interactive-grid{
@@ -2146,13 +2151,20 @@ ScrollTrigger.create({
       const p = st.progress;
       gsap.to(human, { x: '0vw', opacity: 0.32 + p * 0.10, filter: 'blur(0px) grayscale(0%)', overwrite: 'auto', duration: 0.4 });
       gsap.to(agent, { x: '0vw', opacity: 0.42 + p * 0.10, filter: 'blur(0px)', overwrite: 'auto', duration: 0.4 });
-      gsap.to(glow, { opacity: p, scale: 0.4 + p * 0.6, overwrite: 'auto', duration: 0.4 });
+      gsap.to(glow, { opacity: p * 0.8, scale: 0.4 + p * 0.7, overwrite: 'auto', duration: 0.4 });
       gsap.to('#touchBanner', { opacity: p, overwrite: 'auto', duration: 0.4 });
+      if (p > 0.1) {
+        glow.style.animation = 'glow-pulse 2.4s ease-in-out infinite';
+      } else {
+        glow.style.animation = 'none';
+      }
     },
     onEnter: () => {
+      glow.style.animation = 'glow-pulse 2.4s ease-in-out infinite';
       gsap.to('.benefit-card', { opacity: 1, y: 0, duration: 0.85, stagger: 0.18, delay: 0.1, ease: 'expo.out' });
     },
     onLeaveBack: () => {
+      glow.style.animation = 'none';
       gsap.to('.benefit-card', { opacity: 0, y: 30, duration: 0.5, stagger: 0.08, ease: 'power2.in' });
     }
   });
