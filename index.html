@@ -971,12 +971,13 @@ body::before{
   display:flex;
   flex-direction:column;
   justify-content:center;
+  align-items:flex-start;
   opacity:0;
-  transform:translateY(-30%);
+  transform:translateY(30px);
   transition:opacity .9s var(--ease-out-q), transform .9s var(--ease-out-q);
 }
-.proc-step.passed{opacity:0;transform:translateY(-70%)}
-.proc-step.active{opacity:1;transform:translateY(-50%)}
+.proc-step.passed{opacity:0;transform:translateY(-30px)}
+.proc-step.active{opacity:1;transform:translateY(0)}
 .proc-num{
   font-family:var(--D);
   font-weight:900;
